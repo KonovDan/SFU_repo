@@ -1,7 +1,7 @@
-﻿Console.WriteLine("Введите A"); double A = Convert.ToDouble(Console.ReadLine());
-Console.WriteLine("Введите B"); double B = Convert.ToDouble(Console.ReadLine());
-Console.WriteLine("Введите C"); double C = Convert.ToDouble(Console.ReadLine());
-Console.WriteLine("Введите D"); double D = Convert.ToDouble(Console.ReadLine());
+﻿Console.Write("\nВведите A: "); double A = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите B: "); double B = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите C: "); double C = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите D: "); double D = Convert.ToDouble(Console.ReadLine());
 
 double [] res = new double[10];
 double sump = 0, sum = 0;

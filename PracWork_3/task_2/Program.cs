@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Введите число N");
+﻿Console.Write("\nВведите число N: ");
 int N = Convert.ToInt32(Console.ReadLine());
 int sum = 0, sumSq = 0;
 for (int i = 1; i < N; i++)
@@ -6,6 +6,8 @@ for (int i = 1; i < N; i++)
     sum += i;
     sumSq += (int) Math.Pow(i, 2);
     if (sumSq > 500) {
+        sum -= i;
+        sumSq -= (int) Math.Pow(i, 2);
         break;
     }
 }

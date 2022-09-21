@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Введите количество чисел");
+﻿Console.Write("\nВведите количество чисел: ");
 int n = Convert.ToInt32(Console.ReadLine());
 
 int[] a = new int[n];
@@ -19,4 +19,5 @@ a[index] = tmp;
 
 
 for (int i = 0; i < n; i++) Console.Write(a[i]);
+Console.WriteLine();
 Console.ReadKey();

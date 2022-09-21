@@ -5,7 +5,7 @@
     System.Environment.Exit(1);
 }
 
-Console.Write("Введите количество студентов: ");
+Console.Write("\nВведите количество студентов: ");
 int N = Convert.ToInt32(Console.ReadLine());
 if (N < 0) ex();
 
@@ -22,5 +22,7 @@ for (int i = 0; i < N; i++)
     if (score >= 16) { marks[i] = 5; Console.WriteLine($"Ученик №{i + 1} получает 5"); continue; }
     if (score < 12) { marks[i] = 2; Console.WriteLine($"У ученика №{i + 1} незачет!"); continue; }
 }
+Console.WriteLine($"Максимальное кол-во подятгиваний: {scores.Max()}");
+Console.WriteLine($"Минимальное кол-во подятгиваний: {scores.Min()}");
 return 0;
 
