@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/user/code/SFU_repo/PracWork_3/task_5/task_5.csproj": {}
+    "/home/user/code/sfu_repo/PracWork_3/task_5/task_5.csproj": {}
   },
   "projects": {
-    "/home/user/code/SFU_repo/PracWork_3/task_5/task_5.csproj": {
+    "/home/user/code/sfu_repo/PracWork_3/task_5/task_5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/user/code/SFU_repo/PracWork_3/task_5/task_5.csproj",
+        "projectUniqueName": "/home/user/code/sfu_repo/PracWork_3/task_5/task_5.csproj",
         "projectName": "task_5",
-        "projectPath": "/home/user/code/SFU_repo/PracWork_3/task_5/task_5.csproj",
+        "projectPath": "/home/user/code/sfu_repo/PracWork_3/task_5/task_5.csproj",
         "packagesPath": "/home/user/.nuget/packages/",
-        "outputPath": "/home/user/code/SFU_repo/PracWork_3/task_5/obj/",
+        "outputPath": "/home/user/code/sfu_repo/PracWork_3/task_5/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"

@@ -1,0 +1,15 @@
+/home/user/code/sfu_repo/PracWork_4/task_3/bin/Debug/net6.0/task_3
+/home/user/code/sfu_repo/PracWork_4/task_3/bin/Debug/net6.0/task_3.deps.json
+/home/user/code/sfu_repo/PracWork_4/task_3/bin/Debug/net6.0/task_3.runtimeconfig.json
+/home/user/code/sfu_repo/PracWork_4/task_3/bin/Debug/net6.0/task_3.dll
+/home/user/code/sfu_repo/PracWork_4/task_3/bin/Debug/net6.0/task_3.pdb
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.csproj.AssemblyReference.cache
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.GeneratedMSBuildEditorConfig.editorconfig
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.AssemblyInfoInputs.cache
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.AssemblyInfo.cs
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.csproj.CoreCompileInputs.cache
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.dll
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/refint/task_3.dll
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.pdb
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/task_3.genruntimeconfig.cache
+/home/user/code/sfu_repo/PracWork_4/task_3/obj/Debug/net6.0/ref/task_3.dll
