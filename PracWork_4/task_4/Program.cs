@@ -8,7 +8,7 @@ bool check(string passwd) {
     foreach(char c in passwd) foreach(char i in "abcdefghijklmnopqrstuvwxyz") if (c == i) {c1 = true; break;}
     foreach(char c in passwd) foreach(char i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ") if (c == i) {c2 = true; break;}
     foreach(char c in passwd) foreach(char i in "0123456789") if (c == i) {c3 = true; break;}
-    foreach(char c in passwd) foreach(char i in "!@#$%^&*()\":;/.,<>^~`") if (c == i) {c4 = true; break;}
+    foreach(char c in passwd) foreach(char i in "!@#$%^&*()\":;/.,\\<>^~`") if (c == i) {c4 = true; break;}
 
     return c1 && c2 && c3 && c4 && passwd.Length >= 6 && passwd.Length <= 12;
 }
