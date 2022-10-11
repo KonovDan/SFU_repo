@@ -29,5 +29,3 @@ void f3(int[] array)
     }
 }
 
-
-foreach (int i in array) Console.Write($"{i}");

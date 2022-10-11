@@ -4,6 +4,11 @@
 int R = 3; int C = 3;
 
 // int[,] array = new int[R, C];
+int[,] array = new int[,]{
+    {-2,3,1},
+    {-2,-3,-1},
+    {2,-3,1}
+};
 
 int[] characteristics = new int[C];
 
