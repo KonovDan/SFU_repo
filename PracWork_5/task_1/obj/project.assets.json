@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/user/code/sfu_repo/task_1/task_1.csproj",
+      "projectUniqueName": "/home/user/code/sfu_repo/PracWork_5/task_1/task_1.csproj",
       "projectName": "task_1",
-      "projectPath": "/home/user/code/sfu_repo/task_1/task_1.csproj",
+      "projectPath": "/home/user/code/sfu_repo/PracWork_5/task_1/task_1.csproj",
       "packagesPath": "/home/user/.nuget/packages/",
-      "outputPath": "/home/user/code/sfu_repo/task_1/obj/",
+      "outputPath": "/home/user/code/sfu_repo/PracWork_5/task_1/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
