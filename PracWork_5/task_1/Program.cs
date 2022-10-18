@@ -1,56 +1,16 @@
-﻿
-
-class StudentOfISIT
-{
-    private string _Name;
-    private string _Speciality;
-    private int _Check;
-    private int _AScholarshipAmount;
-
-    public string Name => _Name != null ? _Name  : "None";
-    public string Speciality => _Speciality != null ? _Speciality  : "None";
-    public int Check => _Check != 0 ? _Check  : 0;
-    public int AScholarshipAmount => _AScholarshipAmount != 0 ? _AScholarshipAmount  : 0;
-    private bool Warning { get; }
-    public StudentOfISIT(string Name, string Speciality, int Check, int AScholarshipAmount)
-    {
-        this._Name = Name;
-        this._Speciality = Speciality;
-        this._Check = Check;
-        this._AScholarshipAmount = AScholarshipAmount;
-    }
-
-    public void Get_AScholarship()
-    {
-        if (DateTime.Now.Day == 20) this._Check += this.AScholarshipAmount;
-        else Console.WriteLine("Сегодня не 20 число!");
-    }
-    public void SpendAScholarship(int money, string itemOfExpenditure)
-    {
-        if (Check >= money)
-        {
-            this._Check -= money;
-        }
-        else { Console.WriteLine("Денег на счету нет!"); }
-    }
-}
-
-class Program
+﻿class Program
 {
     public static void Main(string[] args)
     {
         Console.Clear();
         StudentOfISIT student = null;
-        bool f1 = true;
-        
-        while (f1)
+        while (true)
         {
 
             Console.WriteLine("_____MENU_____\n1 Создать студента\n2 Получить данные студента\n3 Получить стпендию\n4 Потратить стипендию\n5 Проверить баланс\n6 Выйти");
             Console.Write("Введите число: ");
-            string input = Console.ReadLine();
             Console.Clear();
-            switch (input)
+            switch (Console.ReadLine())
             {
                 case "1":
                     {
@@ -94,9 +54,45 @@ class Program
                         Console.WriteLine("Баланс равен: " + student.Check);
                     }
                     break;
-                case "6": { f1 = false; } break;
+                case "6": {return;}
                 default: break;
             }
         }
+    }
+}
+
+class StudentOfISIT
+{
+    private string _Name;
+    private string _Speciality;
+    private int _Check;
+    private int _AScholarshipAmount;
+
+
+    public string Name { get => _Name; init { _Name = value; } }
+    public string Speciality { get => _Speciality; init { _Speciality = value; } }
+    public int Check { get => _Check; set { _Check = value; } }
+    public int AScholarshipAmount { get => _AScholarshipAmount; set { _AScholarshipAmount = value; } }
+    public bool Warning { get => this._Check < 100 ? true : false; init { } }
+    public StudentOfISIT(string Name, string Speciality, int Check, int AScholarshipAmount)
+    {
+        this._Name = Name;
+        this._Speciality = Speciality;
+        this._Check = Check;
+        this._AScholarshipAmount = AScholarshipAmount;
+    }
+
+    public void Get_AScholarship()
+    {
+        if (DateTime.Now.Day == 20) this._Check += this.AScholarshipAmount;
+        else Console.WriteLine("Сегодня не 20 число!");
+    }
+    public void SpendAScholarship(int money, string itemOfExpenditure)
+    {
+        if (this._Check >= money && !this.Warning)
+        {
+            this._Check -= money;
+        }
+        else { Console.WriteLine("Денег на счету недостаточно денег или их меньше 100!"); }
     }
 }
