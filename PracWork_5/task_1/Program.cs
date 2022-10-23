@@ -1,7 +1,10 @@
 ﻿class Program
 {
+    public static List<int> months = new List<int>();
+
     public static void Main(string[] args)
     {
+
         Console.Clear();
         StudentOfISIT student = null;
         while (true)
@@ -9,7 +12,6 @@
 
             Console.WriteLine("_____MENU_____\n1 Создать студента\n2 Получить данные студента\n3 Получить стпендию\n4 Потратить стипендию\n5 Проверить баланс\n6 Выйти");
             Console.Write("Введите число: ");
-            Console.Clear();
             switch (Console.ReadLine())
             {
                 case "1":
@@ -36,6 +38,7 @@
                         if (student == null) continue;
 
                         student.Get_AScholarship();
+
                     }
                     break;
                 case "4":
@@ -54,7 +57,7 @@
                         Console.WriteLine("Баланс равен: " + student.Check);
                     }
                     break;
-                case "6": {return;}
+                case "6": { return; }
                 default: break;
             }
         }
@@ -84,8 +87,14 @@ class StudentOfISIT
 
     public void Get_AScholarship()
     {
-        if (DateTime.Now.Day == 20) this._Check += this.AScholarshipAmount;
-        else Console.WriteLine("Сегодня не 20 число!");
+
+        if (!Program.months.Contains(DateTime.Now.Month))
+            if (DateTime.Now.Day == 20)
+            {
+                this._Check += this.AScholarshipAmount;
+                Program.months.Add(DateTime.Now.Month);
+
+            }
     }
     public void SpendAScholarship(int money, string itemOfExpenditure)
     {
@@ -93,6 +102,5 @@ class StudentOfISIT
         {
             this._Check -= money;
         }
-        else { Console.WriteLine("Денег на счету недостаточно денег или их меньше 100!"); }
     }
 }
