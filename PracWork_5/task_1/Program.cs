@@ -76,7 +76,7 @@ class StudentOfISIT
     public string Speciality { get => _Speciality; init { _Speciality = value; } }
     public int Check { get => _Check; set { _Check = value; } }
     public int AScholarshipAmount { get => _AScholarshipAmount; set { _AScholarshipAmount = value; } }
-    public bool Warning { get => this._Check < 100 ? true : false; init { } }
+    public bool Warning { get => this._Check < 100 ? true : false;}
     public StudentOfISIT(string Name, string Speciality, int Check, int AScholarshipAmount)
     {
         this._Name = Name;
