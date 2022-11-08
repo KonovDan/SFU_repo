@@ -1,5 +1,6 @@
 ﻿
-bool check(string passwd) {
+bool check(string? passwd = "") {
+    if (passwd == null) return false;
     bool c1 = false;
     bool c2 = false;
     bool c3 = false;
@@ -13,7 +14,7 @@ bool check(string passwd) {
     return c1 && c2 && c3 && c4 && passwd.Length >= 6 && passwd.Length <= 12;
 }
 
-string passwd = "";
+string? passwd;
 do {
     Console.WriteLine("Введите пороль");
     passwd = Console.ReadLine();

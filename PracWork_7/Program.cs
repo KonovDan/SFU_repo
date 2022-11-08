@@ -1,19 +1,20 @@
-﻿
-
-public class Program
+﻿public class Program
 {
 
-    public static double minScore = 2;
+    public static double minScore = 4.8;
     public static double maxScore = 5;
-    public static int minAge = 18;
-    public static  int maxAge = 60;
+    public static int minAge = 24;
+    public static int maxAge = 30;
 
     public static void Main()
     {
         Factory fact = new Factory();
-        fact.Departments.Add(new InformDepartment("InformDepartment"));
-        fact.Departments.Add(new ElectricianDepartment("ElectricianDepartment"));
-        fact.Departments.Add(new MechanicDepartment("MechanicDepartment"));
+        InformDepartment In = new InformDepartment("InformDepartment");
+        ElectricianDepartment El = new ElectricianDepartment("ElectricianDepartment");
+        MechanicDepartment Me = new MechanicDepartment("MechanicDepartment");
+        fact.Departments.Add(In);
+        fact.Departments.Add(El);
+        fact.Departments.Add(Me);
         fact.Departments.Add(new Department("Department"));
 
         for (int i = 0; i < 10; i++)
@@ -26,14 +27,16 @@ public class Program
         {
             department.StaffSelection(fact.Candidates);
         }
-                    Console.WriteLine();
-                    Console.WriteLine("Не трудоустроенные:");
-        foreach (var candidate in fact.Candidates)
-        {
-            Console.WriteLine($"{candidate.Name} : {candidate.Age} лет: Score - {candidate.Score} : {candidate.PersonSpeciality}");
-        }
 
-
+        Console.WriteLine(In.PrintEmployees());
+        Console.WriteLine(El.PrintEmployees());
+        Console.WriteLine(Me.PrintEmployees());
+        // Console.WriteLine();
+        // Console.WriteLine("Не трудоустроенные:");
+        // foreach (var candidate in fact.Candidates)
+        // {
+        //     Console.WriteLine($"{candidate.Name} : {candidate.Age} лет: Score - {candidate.Score} : {candidate.PersonSpeciality}");
+        // }
     }
 }
 
@@ -48,10 +51,9 @@ class Person
         this.Name = Name;
         this.Age = new Random().Next(Program.minAge, Program.maxAge);
         PersonSpeciality = (Speciality)new Random().Next(0, 5);
-        this.Score = ((double)new Random().Next((int)Program.minScore * 10, (int)Program.maxScore * 10)) / 10;
+        this.Score = ((double)new Random().Next((int)(Program.minScore * 10), (int)(Program.maxScore * 10))) / 10;
     }
 }
-
 enum Speciality
 {
     Electrician,
@@ -99,11 +101,24 @@ class Department
             candidates.Remove(candidate);
         }
     }
+    public string PrintEmployees()
+    {
+        string result = "==Список сотрудников департамента " + this.Title + "==\n";
+        foreach (var item in Employees)
+        {
+            result += item.Name + "\n";
+        }
+        result += "--------------";
+        return result;
+    }
 }
 
 class ElectricianDepartment : Department
 {
-    public ElectricianDepartment(string Title) : base(Title) { }
+    public ElectricianDepartment(string Title) : base(Title)
+    {
+
+    }
     public override void StaffSelection(List<Person> candidates)
     {
         List<Person> tmp = new List<Person> { };
@@ -119,6 +134,16 @@ class ElectricianDepartment : Department
         {
             candidates.Remove(candidate);
         }
+    }
+    new public string PrintEmployees()
+    {
+        string result = "==Список сотрудников департамента " + this.Title + "==\n";
+        foreach (var item in Employees)
+        {
+            result += item.Name + "\t" + item.Score + "\n";
+        }
+        result += "--------------";
+        return result;
     }
 }
 class MechanicDepartment : Department
@@ -140,6 +165,16 @@ class MechanicDepartment : Department
             candidates.Remove(candidate);
         }
     }
+    new public string PrintEmployees()
+    {
+        string result = "==Список сотрудников департамента " + this.Title + "==\n";
+        foreach (var item in Employees)
+        {
+            result += item.Name + "\t" + item.Age + "\n";
+        }
+        result += "--------------";
+        return result;
+    }
 }
 class InformDepartment : Department
 {
@@ -160,5 +195,15 @@ class InformDepartment : Department
         {
             candidates.Remove(candidate);
         }
+    }
+    new public string PrintEmployees()
+    {
+        string result = "==Список сотрудников департамента " + this.Title + "==\n";
+        foreach (var item in Employees)
+        {
+            result += item.Name + "\t" + item.PersonSpeciality + "\t" + item.Age + "\n";
+        }
+        result += "--------------";
+        return result;
     }
 }

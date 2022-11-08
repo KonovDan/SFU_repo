@@ -7,7 +7,7 @@ void main()
 {
 
     Console.WriteLine("Введите имя");
-    string name = Console.ReadLine();
+    string? name = Console.ReadLine();
 
     Console.WriteLine("Введите сумму");
     double sum = Convert.ToDouble(Console.ReadLine());
