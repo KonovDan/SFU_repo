@@ -21,8 +21,7 @@
         List<GentleSmartphone> smartphones = new List<GentleSmartphone> { };
         for (int i = 0; i < numberOfSmartphonesToProduce; i++)
         {
-            TactileSensor sensor = new TactileSensor((byte)new Random().Next(0, 100));
-            GentleSmartphone smartphone = new GentleSmartphone(i, sensor);
+            GentleSmartphone smartphone = new GentleSmartphone();
             smartphones.Add(smartphone);
         }
         return smartphones;
@@ -54,21 +53,23 @@
 class TactileSensor
 {
     public byte sensetivity { get; init; }
-    public TactileSensor(byte sensetivity)
+    public TactileSensor()
     {
-        this.sensetivity = sensetivity;
+        this.sensetivity = (byte)new Random().Next(0, 100);
     }
 }
 
 class GentleSmartphone
 {
+    public static int _SerialNumber { get; set; } = 0;
     public int SerialNumber { get; init; }
     public TactileSensor sensor { get; init; }
 
-    public GentleSmartphone(int SerialNumber, TactileSensor sensor)
+    public GentleSmartphone()
     {
-        this.SerialNumber = SerialNumber;
-        this.sensor = sensor;
+        this.SerialNumber = GentleSmartphone._SerialNumber;
+        GentleSmartphone._SerialNumber += 1;
+        this.sensor = new TactileSensor();
     }
 
 }
@@ -81,13 +82,14 @@ enum TransformatorType
 
 class Transformator
 {
-    public int SerialNumber { get; set; } = 0;
+    static public int _SerialNumber { get; set; } = 0;
+    public int SerialNumber { get; init; }
     public TransformatorType TransformType { get; init; }
 
     public Transformator(TransformatorType TransformType)
     {
-        this.SerialNumber = SerialNumber;
-        SerialNumber += 1;
+        this.SerialNumber = Transformator._SerialNumber;
+        Transformator._SerialNumber += 1;
         this.TransformType = TransformType;
     }
 }
@@ -153,5 +155,6 @@ class Factory
                 }
             }
         }
+        this.Smartphones.Clear();
     }
 }
