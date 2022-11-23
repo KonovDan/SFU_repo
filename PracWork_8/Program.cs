@@ -5,33 +5,9 @@
     {
 
         Factory fact = new Factory(producePhones());
-        fact.Customers.Add(
-            new Customer(
-                "Петя",
-                60,
-                new Transformator(
-                    0, TransformatorType.Multipier
-                )
-            )
-        );
-        fact.Customers.Add(
-            new Customer(
-                "Коля",
-                30,
-                new Transformator(
-                    0, TransformatorType.Multipier
-                )
-            )
-        );
-        fact.Customers.Add(
-            new Customer(
-                "Саня",
-                100,
-                new Transformator(
-                    0, TransformatorType.Divider
-                )
-            )
-        );
+        fact.Customers.Add(new Customer("Петя", 60));
+        fact.Customers.Add(new Customer("Коля", 30));
+        fact.Customers.Add(new Customer("Саня", 100));
         showStatistics(fact);
 
         fact.SaleSmartphone();
@@ -56,12 +32,16 @@
     {
         if (factory.Customers == null || factory.Smartphones == null) return;
         Console.WriteLine("Покупатели:");
+        Console.WriteLine("Name    Sens    Tran    Smart#");
         foreach (Customer customer in factory.Customers)
         {
-            string line = customer.FullName + "    " + customer.GentleRate + "    " + customer.TransformModule.TransformType + "    ";
-            if (customer.Smartphone != null) line +=customer.Smartphone.SerialNumber;
+            string line = customer.FullName + "    " + customer.GentleRate;
+            if (customer.TransformModule != null) line += "    " + customer.TransformModule.TransformType + " ";
+            else line += "          ";
+            if (customer.Smartphone != null) line += "\t" + customer.Smartphone.SerialNumber;
             Console.WriteLine(line);
         }
+        Console.WriteLine();
         Console.WriteLine("Смартфоны на складе:");
         foreach (GentleSmartphone smartphone in factory.Smartphones)
         {
@@ -101,12 +81,13 @@ enum TransformatorType
 
 class Transformator
 {
-    public int SerialNumber { get; init; }
+    public int SerialNumber { get; set; } = 0;
     public TransformatorType TransformType { get; init; }
 
-    public Transformator(int SerialNumber, TransformatorType TransformType)
+    public Transformator(TransformatorType TransformType)
     {
         this.SerialNumber = SerialNumber;
+        SerialNumber += 1;
         this.TransformType = TransformType;
     }
 }
@@ -115,19 +96,18 @@ class Customer
     public string FullName { get; init; }
     public byte GentleRate { get; init; }
     public GentleSmartphone? Smartphone { get; set; }
-    public Transformator TransformModule { get; init; }
+    public Transformator? TransformModule { get; set; }
 
-    public Customer(string FullName, byte GentleRate, Transformator TransformModule)
+    public Customer(string FullName, byte GentleRate)
     {
         this.FullName = FullName;
         this.GentleRate = GentleRate;
-        this.TransformModule = TransformModule;
     }
 }
 
 class Factory
 {
-    public List<GentleSmartphone>? Smartphones { get; init; } = new List<GentleSmartphone> { };
+    public List<GentleSmartphone>? Smartphones { get; init; }
     public List<Customer> Customers { get; init; } = new List<Customer> { };
 
     public Factory(List<GentleSmartphone> Smartphones)
@@ -140,22 +120,38 @@ class Factory
         if (this.Customers == null || this.Smartphones == null) return;
         int size = this.Customers.Count;
 
-            foreach (Customer customer in this.Customers)
+        foreach (Customer customer in this.Customers)
+        {
+            foreach (GentleSmartphone smartphone in this.Smartphones)
             {
 
-                foreach (GentleSmartphone smartphone in this.Smartphones)
+                if ((float)customer.GentleRate > (float)smartphone.sensor.sensetivity / 1.5 &&
+                customer.GentleRate < smartphone.sensor.sensetivity * 2)
                 {
-                    int customerFinalGentleRate = (int)(customer.GentleRate * (customer.TransformModule.TransformType == TransformatorType.Multipier ? 2 : 0.5));
-                    if ((int)(customerFinalGentleRate / 1.5) >= smartphone.sensor.sensetivity ||
-                    customerFinalGentleRate * 2 <= smartphone.sensor.sensetivity)
-                    {
-                        customer.Smartphone = smartphone;
+                    customer.Smartphone = smartphone;
 
-                        this.Smartphones.Remove(smartphone);
-                        break;
-                    }
+                    this.Smartphones.Remove(smartphone);
+                    break;
+                }
+                if ((float)customer.GentleRate * 2 > (float)smartphone.sensor.sensetivity / 1.5 &&
+                customer.GentleRate * 2 < smartphone.sensor.sensetivity * 2)
+                {
+                    customer.TransformModule = new Transformator(TransformatorType.Multipier);
+                    customer.Smartphone = smartphone;
+
+                    this.Smartphones.Remove(smartphone);
+                    break;
+                }
+                if ((float)customer.GentleRate / 2 > (float)smartphone.sensor.sensetivity / 1.5 &&
+                (float)customer.GentleRate / 2 < smartphone.sensor.sensetivity * 2)
+                {
+                    customer.TransformModule = new Transformator(TransformatorType.Divider);
+                    customer.Smartphone = smartphone;
+
+                    this.Smartphones.Remove(smartphone);
+                    break;
                 }
             }
-        
+        }
     }
 }
