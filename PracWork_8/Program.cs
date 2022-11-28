@@ -1,13 +1,14 @@
 ﻿class Program
 {
-    private const int numberOfSmartphonesToProduce = 2;
     public static void Main(string[] args)
     {
 
-        Factory fact = new Factory(producePhones());
+        Factory fact = new Factory();
+        fact.producePhones(10);
         fact.Customers.Add(new Customer("Петя", 60));
         fact.Customers.Add(new Customer("Коля", 30));
         fact.Customers.Add(new Customer("Саня", 100));
+
         showStatistics(fact);
 
         fact.SaleSmartphone();
@@ -16,16 +17,7 @@
 
     }
 
-    private static List<GentleSmartphone> producePhones()
-    {
-        List<GentleSmartphone> smartphones = new List<GentleSmartphone> { };
-        for (int i = 0; i < numberOfSmartphonesToProduce; i++)
-        {
-            GentleSmartphone smartphone = new GentleSmartphone();
-            smartphones.Add(smartphone);
-        }
-        return smartphones;
-    }
+
 
     private static void showStatistics(Factory factory)
     {
@@ -109,12 +101,12 @@ class Customer
 
 class Factory
 {
-    public List<GentleSmartphone>? Smartphones { get; init; }
-    public List<Customer> Customers { get; init; } = new List<Customer> { };
+    public List<GentleSmartphone> Smartphones { get;} = new List<GentleSmartphone> { };
+    public List<Customer> Customers { get;} = new List<Customer> { };
 
-    public Factory(List<GentleSmartphone> Smartphones)
+    public Factory()
     {
-        this.Smartphones = Smartphones;
+
     }
 
     public void SaleSmartphone()
@@ -156,5 +148,14 @@ class Factory
             }
         }
         this.Smartphones.Clear();
+    }
+
+    public void producePhones(int numberOfSmartphonesToProduce)
+    {
+        for (int i = 0; i < numberOfSmartphonesToProduce; i++)
+        {
+            GentleSmartphone smartphone = new GentleSmartphone();
+            this.Smartphones.Add(smartphone);
+        }
     }
 }

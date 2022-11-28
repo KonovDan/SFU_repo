@@ -1,0 +1,15 @@
+/home/daniil/Documents/code/SFU_repo/PracWork_8/bin/Debug/net7.0/PracWork_8
+/home/daniil/Documents/code/SFU_repo/PracWork_8/bin/Debug/net7.0/PracWork_8.deps.json
+/home/daniil/Documents/code/SFU_repo/PracWork_8/bin/Debug/net7.0/PracWork_8.runtimeconfig.json
+/home/daniil/Documents/code/SFU_repo/PracWork_8/bin/Debug/net7.0/PracWork_8.dll
+/home/daniil/Documents/code/SFU_repo/PracWork_8/bin/Debug/net7.0/PracWork_8.pdb
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.csproj.AssemblyReference.cache
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.GeneratedMSBuildEditorConfig.editorconfig
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.AssemblyInfoInputs.cache
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.AssemblyInfo.cs
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.csproj.CoreCompileInputs.cache
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.dll
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/refint/PracWork_8.dll
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.pdb
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/PracWork_8.genruntimeconfig.cache
+/home/daniil/Documents/code/SFU_repo/PracWork_8/obj/Debug/net7.0/ref/PracWork_8.dll
