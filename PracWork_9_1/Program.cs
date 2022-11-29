@@ -9,7 +9,6 @@ class Program
             new Programming(75)
         };
 
-
         List<Student> students = new List<Student>{
             new Student( "Антон",
                         new Dictionary<Discipline, int>{
@@ -132,8 +131,8 @@ class History : Discipline, IHaveFinalControll, IHavePractice
     {
         if(student.FinalControl[this] >= this.PassingScore)
         if(student.Practices[this] >= this.PracticeCount)
-        return $"{student.Name} получает достаточный бал на итоговой аттестации и может расчитывать на автомат по математическому анализу";
-        return $"{student.Name} не получает достаточный бал на итоговой аттестации и не может расчитывать на автомат по математическому анализу";
+        return $"{student.Name} получает достаточный бал на итоговой аттестации и может расчитывать на автомат по истории";
+        return $"{student.Name} не получает достаточный бал на итоговой аттестации и не может расчитывать на автомат по истории";
     }
 }
 
@@ -147,8 +146,8 @@ class Programming : Discipline, IHavePractice
     override public string Check(Student student)
     {
         if(student.Practices[this] >= this.PracticeCount)
-        return $"{student.Name} получает достаточный бал на итоговой аттестации и может расчитывать на автомат по математическому анализу";
-        return $"{student.Name} не получает достаточный бал на итоговой аттестации и не может расчитывать на автомат по математическому анализу";
+        return $"{student.Name} получает достаточный бал на итоговой аттестации и может расчитывать на автомат по программированию";
+        return $"{student.Name} не получает достаточный бал на итоговой аттестации и не может расчитывать на автомат по программированию";
     }
 }
 /*--------------------------------------------------<End>--------------------------------------------------*/
