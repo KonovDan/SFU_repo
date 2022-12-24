@@ -1,25 +1,25 @@
 ﻿class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
 
-        Factory fact = new Factory();
-        fact.producePhones(10);
+        Factory fact = new();
+        fact.ProducePhones(10);
         fact.Customers.Add(new Customer("Петя", 60));
         fact.Customers.Add(new Customer("Коля", 30));
         fact.Customers.Add(new Customer("Саня", 100));
 
-        showStatistics(fact);
+        ShowStatistics(fact);
 
         fact.SaleSmartphone();
 
-        showStatistics(fact);
+        ShowStatistics(fact);
 
     }
 
 
 
-    private static void showStatistics(Factory factory)
+    private static void ShowStatistics(Factory factory)
     {
         if (factory.Customers == null || factory.Smartphones == null) return;
         Console.WriteLine("Покупатели:");
@@ -36,7 +36,7 @@
         Console.WriteLine("Смартфоны на складе:");
         foreach (GentleSmartphone smartphone in factory.Smartphones)
         {
-            Console.WriteLine("#" + smartphone.SerialNumber + " : " + smartphone.sensor.sensetivity);
+            Console.WriteLine("#" + smartphone.SerialNumber + " : " + smartphone.Sensor.Sensetivity);
         }
         Console.WriteLine();
     }
@@ -44,24 +44,24 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class TactileSensor
 {
-    public byte sensetivity { get; init; }
+    public byte Sensetivity { get; init; }
     public TactileSensor()
     {
-        this.sensetivity = (byte)new Random().Next(0, 100);
+        this.Sensetivity = (byte)new Random().Next(0, 100);
     }
 }
 
 class GentleSmartphone
 {
-    public static int _SerialNumber { get; set; } = 0;
+    public static int AbsoluteSerialNumber { get; set; } = 0;
     public int SerialNumber { get; init; }
-    public TactileSensor sensor { get; init; }
+    public TactileSensor Sensor { get; init; }
 
     public GentleSmartphone()
     {
-        this.SerialNumber = GentleSmartphone._SerialNumber;
-        GentleSmartphone._SerialNumber += 1;
-        this.sensor = new TactileSensor();
+        this.SerialNumber = GentleSmartphone.AbsoluteSerialNumber;
+        GentleSmartphone.AbsoluteSerialNumber += 1;
+        this.Sensor = new TactileSensor();
     }
 
 }
@@ -74,14 +74,14 @@ enum TransformatorType
 
 class Transformator
 {
-    static public int _SerialNumber { get; set; } = 0;
+    static public int AbsoluteSerialNumber { get; set; } = 0;
     public int SerialNumber { get; init; }
     public TransformatorType TransformType { get; init; }
 
     public Transformator(TransformatorType TransformType)
     {
-        this.SerialNumber = Transformator._SerialNumber;
-        Transformator._SerialNumber += 1;
+        this.SerialNumber = Transformator.AbsoluteSerialNumber;
+        Transformator.AbsoluteSerialNumber += 1;
         this.TransformType = TransformType;
     }
 }
@@ -112,23 +112,23 @@ class Factory
     public void SaleSmartphone()
     {
         if (this.Customers == null || this.Smartphones == null) return;
-        int size = this.Customers.Count;
+
 
         foreach (Customer customer in this.Customers)
         {
             foreach (GentleSmartphone smartphone in this.Smartphones)
             {
 
-                if ((float)customer.GentleRate > (float)smartphone.sensor.sensetivity / 1.5 &&
-                customer.GentleRate < smartphone.sensor.sensetivity * 2)
+                if ((float)customer.GentleRate > (float)smartphone.Sensor.Sensetivity / 1.5 &&
+                customer.GentleRate < smartphone.Sensor.Sensetivity * 2)
                 {
                     customer.Smartphone = smartphone;
 
                     this.Smartphones.Remove(smartphone);
                     break;
                 }
-                if ((float)customer.GentleRate * 2 > (float)smartphone.sensor.sensetivity / 1.5 &&
-                customer.GentleRate * 2 < smartphone.sensor.sensetivity * 2)
+                if ((float)customer.GentleRate * 2 > (float)smartphone.Sensor.Sensetivity / 1.5 &&
+                customer.GentleRate * 2 < smartphone.Sensor.Sensetivity * 2)
                 {
                     customer.TransformModule = new Transformator(TransformatorType.Multipier);
                     customer.Smartphone = smartphone;
@@ -136,8 +136,8 @@ class Factory
                     this.Smartphones.Remove(smartphone);
                     break;
                 }
-                if ((float)customer.GentleRate / 2 > (float)smartphone.sensor.sensetivity / 1.5 &&
-                (float)customer.GentleRate / 2 < smartphone.sensor.sensetivity * 2)
+                if ((float)customer.GentleRate / 2 > (float)smartphone.Sensor.Sensetivity / 1.5 &&
+                (float)customer.GentleRate / 2 < smartphone.Sensor.Sensetivity * 2)
                 {
                     customer.TransformModule = new Transformator(TransformatorType.Divider);
                     customer.Smartphone = smartphone;
@@ -150,11 +150,11 @@ class Factory
         this.Smartphones.Clear();
     }
 
-    public void producePhones(int numberOfSmartphonesToProduce)
+    public void ProducePhones(int numberOfSmartphonesToProduce)
     {
         for (int i = 0; i < numberOfSmartphonesToProduce; i++)
         {
-            GentleSmartphone smartphone = new GentleSmartphone();
+            GentleSmartphone smartphone = new();
             this.Smartphones.Add(smartphone);
         }
     }

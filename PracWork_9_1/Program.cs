@@ -1,15 +1,17 @@
 ﻿/*--------------------------------------------------<Main>--------------------------------------------------*/
 class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
-        List<Discipline> disciplines = new List<Discipline> {
+        
+        List<Discipline> disciplines = new()
+        {
             new MathematicalAnalysis(80),
             new History(90),
             new Programming(75)
         };
 
-        List<Student> students = new List<Student>{
+        List<Student> students = new(){
             new Student( "Антон",
                         new Dictionary<Discipline, int>{
                             {disciplines[0], 90},
